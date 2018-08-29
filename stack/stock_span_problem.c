@@ -36,6 +36,36 @@ int getTop(struct stack *mem) {
 }
 
 int main() {
+	int a[7] = {20, 90, 60, 70, 60, 75, 85};
+	struct stack *stck = (struct stack*)malloc(sizeof(struct stack));
+	initialize(stck, 6);
+	push(stck, 0);
+	int i, span[7];
+	int largest = 1;
+	span[0] = 1;
+	for( i = 1; i < 7; ) {
+		if( a[i] <= a[getTop(stck)]) {
+			span[i] = i - getTop(stck);
+			if(span[i] > largest) largest = span[i];
+			push(stck, i);
+			i ++;
+		}else {
+			pop(stck);
+			
+		}
 
+		//Empty check
+		if(isEmpty(stck -> top)) {
+			span[i] = i + 1;
+			if(span[i] > largest) largest = span[i];
+			int k;
+			for( k = 0; k <= i; k ++ ){
+				push(stck, k);
+			}
+			i++;
+		}
 
+	}
+
+	printf("%d\n", largest);
 }
