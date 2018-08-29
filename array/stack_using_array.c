@@ -21,9 +21,18 @@ int isFull(int top, int size) {
 	return 0;
 }
 
-void insert(struct stack* mem, int val) {
+void push(struct stack* mem, int val) {
 	mem->top += 1;
 	mem->arr[mem->top] = val;
+}
+
+void pop(struct stack *mem) {
+	mem->top = mem->top - 1;
+}
+
+int getTop(struct stack *mem) {
+	int val = mem->arr[mem->top];
+	return val;
 }
 
 int main() {
@@ -32,16 +41,17 @@ int main() {
 	initialize(stck, 10);
 	printf("%d\n", isEmpty(stck -> top));
 	printf("%d\n", isFull(stck -> top, size - 1));
-	insert(stck, 1);
-	insert(stck, 2);
-	insert(stck, 3);
-	insert(stck, 4);
-	insert(stck, 5);
-	insert(stck, 6);
-	insert(stck, 7);
-	insert(stck, 8);
-	insert(stck, 9);
-	insert(stck, 10);
-	printf("%d\n", isFull(stck -> top, size - 1));
+	push(stck, 1);
+	push(stck, 2);
+	push(stck, 3);
+	push(stck, 4);
+	push(stck, 5);
+	push(stck, 6);
+	push(stck, 7);
+	push(stck, 8);
+	push(stck, 9);
+	push(stck, 10);
+	pop(stck);
+	printf("%d\n", getTop(stck));
 
 }
