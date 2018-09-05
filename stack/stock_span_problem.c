@@ -36,7 +36,7 @@ int getTop(struct stack *mem) {
 }
 
 int main() {
-	int a[7] = {20, 90, 60, 70, 60, 75, 85};
+	int a[7] = {4, 9, 0, 2, 1, 6, 2};
 	struct stack *stck = (struct stack*)malloc(sizeof(struct stack));
 	initialize(stck, 6);
 	push(stck, 0);
