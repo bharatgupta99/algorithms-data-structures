@@ -2,11 +2,11 @@
 
 a collection of most of the coding question solved during uca 2018-19.
 
-##Prerequisites
+## Prerequisites
 
 git enabled terminal
 
-##Installation
+## Installation
 
 ```
 git clone https://github.com/bharatgupta99/uca_2018.git
