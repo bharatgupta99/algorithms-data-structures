@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<limits.h>
 
 struct BSTNode {
 	int data;
@@ -35,13 +36,20 @@ int findMin(struct BSTNode* root) {
 	}
 }
 
+//efficient method O(n)
+int checkBST2(struct BSTNode* root, int min, int max) {
+	if(root == NULL)
+		return 1;
+	else if(root -> data < min || root -> data > max)
+		return 0;
+	return checkBST2(root -> left, min, root -> data) && checkBST2(root -> right, root -> data, max);
+}
 
 
 
 
 
-
-//inefficient recursive method
+//inefficient method O(n^2)
 int checkBST(struct BSTNode* root) {
 	if(root  == NULL)
 		return 1;
@@ -110,7 +118,7 @@ int main() {
 	
 	struct BSTNode* root = n1;
 
-
+	printf("%d\n", checkBST2(root, INT_MIN, INT_MAX));
 	printf("%d\n", checkBST(root));
 
 
