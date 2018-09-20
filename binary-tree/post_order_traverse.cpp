@@ -1,3 +1,5 @@
+//left right root
+
 #include<iostream>
 #include<stack>
 
