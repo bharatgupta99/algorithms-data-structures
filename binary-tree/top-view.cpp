@@ -79,17 +79,17 @@ int main() {
 	var -> root = root;
 	var -> disp = 0;
 
+	
 	s.push(var);
 
 	while(!s.empty()) {
 		m.insert( pair <int, int> ( var -> disp, var -> root -> data) );
-		printf("{%d %d}\n", m.find(var->disp) -> first, m.find(var->disp) -> second  );
 		s.pop();
 		if( var -> root -> right != NULL ) {
 			label* var1 = new label();
 			var1 -> root = var -> root -> right;
 			var1 -> disp = var -> disp + 1;
-			s.push(var1);
+			s.push(var1);	
 		}
 		if( var -> root -> left != NULL ) {
 			label* var2 = new label();
