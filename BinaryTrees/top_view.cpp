@@ -18,19 +18,19 @@ typedef struct label
 
 int main() {
 
-	struct node* n1 = (struct node*) malloc(sizeof(struct node));
-	struct node* n2 = (struct node*) malloc(sizeof(struct node));
-	struct node* n3 = (struct node*) malloc(sizeof(struct node));
-	struct node* n4 = (struct node*) malloc(sizeof(struct node));
-	struct node* n5 = (struct node*) malloc(sizeof(struct node));
-	struct node* n6 = (struct node*) malloc(sizeof(struct node));
-	struct node* n7 = (struct node*) malloc(sizeof(struct node));
-	struct node* n8 = (struct node*) malloc(sizeof(struct node));
-	struct node* n9 = (struct node*) malloc(sizeof(struct node));
-	struct node* n10 = (struct node*) malloc(sizeof(struct node));
-	struct node* n11 = (struct node*) malloc(sizeof(struct node));
-	struct node* n12 = (struct node*) malloc(sizeof(struct node));
-	struct node* n13 = (struct node*) malloc(sizeof(struct node));
+	node* n1 = new node();
+	node* n2 = new node();
+	node* n3 = new node();
+	node* n4 = new node();
+	node* n5 = new node();
+	node* n6 = new node();
+	node* n7 = new node();
+	node* n8 = new node();
+	node* n9 = new node();
+	node* n10 = new node();
+	node* n11 = new node();
+	node* n12 = new node();
+	node* n13 = new node();
 	n1->data = 1;
 	n2->data = 2;
 	n3->data = 3;
