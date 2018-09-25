@@ -27,7 +27,7 @@ int isEmpty(struct Queue *q) {
 
 }
 
-void push(struct Queue* q, int d) {
+void enqueue(struct Queue* q, int d) {
 	if(isFull(q))
 		return;
 
@@ -36,7 +36,7 @@ void push(struct Queue* q, int d) {
 	q -> a[q -> tail] = d;
 }
 
-int pop(struct Queue* q) {
+int dequeue(struct Queue* q) {
 	if(isEmpty(q))
 		return -999;
 	(q -> size) --;
@@ -58,19 +58,19 @@ int main() {
 
 	struct Queue* q = createQueue(10);
 
-	push(q, 1);
-	push(q, 2);
-	push(q, 3);
-	push(q, 4);
-	push(q, 5);
-	push(q, 6);
-	push(q, 7);
-	push(q, 8);
-	push(q, 9);
-	push(q, 10);
-	printf("%d\n", pop(q));
-	printf("%d\n", pop(q));
-	push(q, 11);
+	enqueue(q, 1);
+	enqueue(q, 2);
+	enqueue(q, 3);
+	enqueue(q, 4);
+	enqueue(q, 5);
+	enqueue(q, 6);
+	enqueue(q, 7);
+	enqueue(q, 8);
+	enqueue(q, 9);
+	enqueue(q, 10);
+	printf("%d\n", dequeue(q));
+	printf("%d\n", dequeue(q));
+	enqueue(q, 11);
 
 	printf("%d", peek(q));
 

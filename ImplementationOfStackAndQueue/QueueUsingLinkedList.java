@@ -17,7 +17,7 @@ class QueueUsingLinkedList {
 		return head == null;
 	}
 
-	public void push(int data) {
+	public void enqueue(int data) {
 		Node temp = new Node(data);
 		if(head == null || tail == null) {
 			head = temp;
@@ -28,7 +28,7 @@ class QueueUsingLinkedList {
 		}
 	}
 
-	public int pop() {
+	public int dequeue() {
 		if(isEmpty())
 			return -999;
 

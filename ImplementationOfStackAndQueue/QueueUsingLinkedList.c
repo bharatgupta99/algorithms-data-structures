@@ -6,7 +6,7 @@ struct Node {
 	struct Node* next;
 };
 
-void push(struct Node** tail, struct Node** head, int data) {
+void enqueue(struct Node** tail, struct Node** head, int data) {
 	
 	struct Node* nn = (struct Node*)malloc(sizeof(struct Node));
 	nn -> data = data;
@@ -24,7 +24,7 @@ int isEmpty(struct Node** tail, struct Node** head) {
 	return *head == NULL;
 }
 
-int pop(struct Node** tail, struct Node** head) {
+int dequeue(struct Node** tail, struct Node** head) {
 	if(isEmpty(tail, head))
 		return -999;
 	struct Node* temp = *head;
@@ -49,16 +49,16 @@ int main() {
 
 
 
-	push(&tail, &head, 10);
-	push(&tail, &head, 12);
-	push(&tail, &head, 13);
-	push(&tail, &head, 14);
+	enqueue(&tail, &head, 10);
+	enqueue(&tail, &head, 12);
+	enqueue(&tail, &head, 13);
+	enqueue(&tail, &head, 14);
 	printf("%d\n", isEmpty(&tail, &head));
-	printf("%d\n", pop(&tail, &head));
-	printf("%d\n", pop(&tail, &head));
-	printf("%d\n", pop(&tail, &head));
-	printf("%d\n", pop(&tail, &head));
-	printf("%d\n", pop(&tail, &head));	
+	printf("%d\n", dequeue(&tail, &head));
+	printf("%d\n", dequeue(&tail, &head));
+	printf("%d\n", dequeue(&tail, &head));
+	printf("%d\n", dequeue(&tail, &head));
+	printf("%d\n", dequeue(&tail, &head));	
 	printf("%d\n", peek(&tail, &head));
 
 
