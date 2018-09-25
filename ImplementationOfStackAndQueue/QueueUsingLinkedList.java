@@ -14,17 +14,17 @@ class QueueUsingLinkedList {
 	public Node head = null;
 
 	public boolean isEmpty() {
-		return tail == null;
+		return head == null;
 	}
 
 	public void push(int data) {
 		Node temp = new Node(data);
-		if(tail == null || head == null) {
+		if(head == null || tail == null) {
+			head = temp;
 			tail = temp;
-			head = temp;
 		}else{
-			head.next = temp;
-			head = temp;
+			tail.next = temp;
+			tail = temp;
 		}
 	}
 
@@ -32,8 +32,8 @@ class QueueUsingLinkedList {
 		if(isEmpty())
 			return -999;
 
-		int d = tail.data;
-		tail = tail.next;
+		int d = head.data;
+		head = head.next;
 		return d;
 	}
 
@@ -42,7 +42,7 @@ class QueueUsingLinkedList {
 		if(isEmpty())
 			return -999;
 
-		return head.data;
+		return tail.data;
 	}
 
 

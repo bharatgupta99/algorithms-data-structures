@@ -30,8 +30,8 @@ void push(struct Queue* q, int data) {
 		return;
 
 	(q -> size) ++;
-	(q -> head) = (q -> head + 1 ) % (q -> capacity);
-	q -> a[q -> head] = data;
+	(q -> tail) = (q -> tail + 1 ) % (q -> capacity);
+	q -> a[q -> tail] = data;
 }
 
 int pop(struct Queue *q) {
@@ -39,15 +39,15 @@ int pop(struct Queue *q) {
 		return -999;
 
 	(q -> size) --;
-	(q -> tail) = (q -> tail + 1) % (q -> capacity);
-	return q -> a[q -> tail];
+	(q -> head) = (q -> head + 1) % (q -> capacity);
+	return q -> a[q -> head];
 }
 
 int peek(struct Queue *q) {
 	if(isEmpty(q))
 		return -999;
 
-	return q -> a[q -> head];
+	return q -> a[q -> tail];
 }
 
 

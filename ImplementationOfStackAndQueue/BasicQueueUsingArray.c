@@ -19,7 +19,7 @@ struct Queue* createQueue(int capacity) {
 }
 
 int isFull(struct Queue* q) {
-	return (q -> head) == (q -> capacity) - 1;
+	return (q -> tail) == (q -> capacity) - 1;
 }
 
 int isEmpty(struct Queue *q) {
@@ -32,23 +32,23 @@ void push(struct Queue* q, int d) {
 		return;
 
 	(q -> size) ++;
-	++ (q -> head);
-	q -> a[q -> head] = d;
+	++ (q -> tail);
+	q -> a[q -> tail] = d;
 }
 
 int pop(struct Queue* q) {
 	if(isEmpty(q))
 		return -999;
 	(q -> size) --;
-	(q -> tail) ++;
-	return q -> a[q ->tail];
+	(q -> head) ++;
+	return q -> a[q -> head];
 }
 
 int peek(struct Queue* q) {
 	if(isEmpty(q))
 		return -999;
 
-	return q -> a[q -> head];
+	return q -> a[q -> tail];
 }
 
 

@@ -15,21 +15,21 @@ void push(struct Node** tail, struct Node** head, int data) {
 		*head = nn;
 		*tail = nn;
 	}else{
-		(*head) -> next = nn;
-		*head = nn;
+		(*tail) -> next = nn;
+		*tail = nn;
 	}
 }
 
 int isEmpty(struct Node** tail, struct Node** head) {
-	return *tail == NULL;
+	return *head == NULL;
 }
 
 int pop(struct Node** tail, struct Node** head) {
 	if(isEmpty(tail, head))
 		return -999;
-	struct Node* temp = *tail;
+	struct Node* temp = *head;
 	int d = temp -> data;
-	*tail = (*tail) -> next;
+	*head = (*head) -> next;
 	free(temp);
 	return d;
 }
@@ -38,7 +38,7 @@ int peek(struct Node** tail, struct Node** head) {
 	if(isEmpty(tail, head))
 		return -999;
 
-	return (*head) -> data;
+	return (*tail) -> data;
 }
 
 

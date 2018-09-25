@@ -1,5 +1,5 @@
 class BasicQueueUsingArray {
-	private int size, head, tail;
+	public int size, head, tail;
 	private int[] a;
 	private int capacity;
 
@@ -20,33 +20,33 @@ class BasicQueueUsingArray {
 	}
 
 	public boolean isFull() {
-		return head == capacity - 1;
+		return tail == capacity - 1;
 	}
 
-	public void push(int data) {
+	public void enqueue(int data) {
 		if(isFull())
 			return;
 
 		size ++;
-		head ++;
-		a[head] = data;
+		tail ++;
+		a[tail] = data;
 
 	}
 
-	public int pop() {
+	public int dequeue() {
 		if(isEmpty())
 			return -999;
 
 		size --;
-		tail ++;
-		return a[tail];
+		head ++;
+		return a[head];
 	}
 
 	public int peek() {
 		if(isEmpty())
 			return -999;
 
-		return a[head];
+		return a[tail];
 	}
 
 

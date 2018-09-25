@@ -23,30 +23,30 @@ class CircularQueueUsingArray {
 		return size == capacity - 1;
 	}
 
-	public void push(int data) {
+	public void enqueue(int data) {
 		if(isFull())
 			return;
 
 		size ++;
-		head = (head + 1) % capacity;
-		a[head] = data;
+		tail = (tail + 1) % capacity;
+		a[tail] = data;
 
 	}
 
-	public int pop() {
+	public int dequeue() {
 		if(isEmpty())
 			return -999;
 
 		size --;
-		tail = (tail + 1) % capacity;
-		return a[tail];
+		head = (head + 1) % capacity;
+		return a[head];
 	}
 
 	public int peek() {
 		if(isEmpty())
 			return -999;
 
-		return a[head];
+		return a[tail];
 	}
 
 
