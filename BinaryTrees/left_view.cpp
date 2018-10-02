@@ -1,20 +1,51 @@
 #include<iostream>
-#include<stack>
 #include<map>
+#include<stack>
 
 using namespace std;
 
 struct node {
 	int data;
-	struct node* left;
-	struct node* right;
+	node* left;
+	node* right;
+	int disp;
 };
 
-typedef struct label
-{
-	struct node* root;
-	int disp;
-}label;
+void printLeftView(node* root) {
+	map<int, int> :: iterator q;
+
+
+	stack<node*> s;
+	map <int, int> m;
+
+	s.push(root);
+
+	while(!s.empty()) {
+		node* temp = s.top();
+		m.insert( pair<int, int> (temp -> disp, temp -> data) );
+		s.pop();
+		if(temp -> right != NULL) {
+			temp -> right -> disp = temp -> disp - 1;
+			s.push(temp -> right);
+		}
+		if(temp -> left != NULL) {
+			temp -> left -> disp = temp -> disp - 1;
+			s.push(temp -> left);
+		}
+		
+	}
+
+
+	for(q = m.begin(); q != m.end(); q++) {
+		cout << q -> second << endl;
+	}
+
+
+
+
+
+
+}
 
 int main() {
 
@@ -72,54 +103,8 @@ int main() {
 
 	node* root = n1;
 
-	stack<label*> s;
-	map<int, int> m;
 
-	label* var = new label();
-	var -> root = root;
-	var -> disp = 0;
 
-	s.push(var);
-
-	while(!s.empty()) {
-		m.insert( pair <int, int> ( var -> disp, var -> root -> data) );
-		//printf("{%d %d}\n", m.find(var->disp) -> first, m.find(var->disp) -> second  );
-		s.pop();
-		if( var -> root -> right != NULL ) {
-			label* var1 = new label();
-			var1 -> root = var -> root -> right;
-			var1 -> disp = var -> disp - 1;
-			s.push(var1);
-		}
-		if( var -> root -> left != NULL ) {
-			label* var2 = new label();
-			var2 -> root = var -> root -> left;
-			var2 -> disp = var -> disp - 1;
-			s.push(var2);
-		}
-		if(!s.empty()) {
-			var -> root = s.top() -> root;
-			var -> disp = s.top() -> disp;
-		}
-	}
-	map<int, int> :: iterator itr;
-	for( itr = m.begin(); itr != m.end(); itr++ ) {
-		cout<< itr -> second << endl;
-	}
+	printLeftView(root);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
