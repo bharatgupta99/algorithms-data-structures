@@ -35,15 +35,9 @@ void printLeftView(node* root) {
 		
 	}
 
-
 	for(q = m.begin(); q != m.end(); q++) {
 		cout << q -> second << endl;
 	}
-
-
-
-
-
 
 }
 
