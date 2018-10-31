@@ -11,6 +11,18 @@ struct node {
 	int disp;
 };
 
+void printRightView(node* root, int depth, int* max_dept) {
+	if(!root)
+		return;
+	if(depth > *max_dept) {
+		cout << root -> data << endl;
+		*max_dept = depth;
+	}
+	printRightView(root -> right, depth + 1, max_dept);
+	printRightView(root -> left, depth + 1, max_dept);
+}
+
+
 void printRightView(node* root) {
 	map<int, int> :: iterator q;
 
@@ -30,11 +42,11 @@ void printRightView(node* root) {
 		}	
 		s.pop();
 		if(temp -> right != NULL) {
-			temp -> right -> disp = temp -> disp - 1;
+			temp -> right -> disp = temp -> disp + 1;
 			s.push(temp -> right);
 		}
 		if(temp -> left != NULL) {
-			temp -> left -> disp = temp -> disp - 1;
+			temp -> left -> disp = temp -> disp + 1;
 			s.push(temp -> left);
 		}
 		
@@ -98,12 +110,11 @@ int main() {
 	n13 -> left = NULL;
 	n13 -> right = NULL;
 
-
-
 	node* root = n1;
 
-
-
 	printRightView(root);
+	cout << "---------------------" << endl;
+	int max_depth = 0;
+	printRightView(root, 1, &max_depth);
 
 }

@@ -1,6 +1,6 @@
 #include<iostream>
 #include<map>
-#include<stack>
+#include<queue>
 
 using namespace std;
 
@@ -12,31 +12,31 @@ struct node {
 };
 
 void printTopView(node* root) {
-	map<int, int> :: iterator q;
+	map<int, int> :: iterator itr;
 
 
-	stack<node*> s;
+	queue<node*> q;
 	map <int, int> m;
 
-	s.push(root);
+	q.push(root);
 
-	while(!s.empty()) {
-		node* temp = s.top();
+	while(!q.empty()) {
+		node* temp = q.front();
 		m.insert( pair<int, int> (temp -> disp, temp -> data) );
-		s.pop();
-		if(temp -> right != NULL) {
-			temp -> right -> disp = temp -> disp + 1;
-			s.push(temp -> right);
-		}
+		q.pop();
 		if(temp -> left != NULL) {
-			temp -> left -> disp = temp -> disp - 1;
-			s.push(temp -> left);
+			temp -> left -> disp = temp -> disp + 1;
+			q.push(temp -> left);
+		}
+		if(temp -> right != NULL) {
+			temp -> right -> disp = temp -> disp - 1;
+			q.push(temp -> right);
 		}
 		
 	}
 
-	for(q = m.begin(); q != m.end(); q++) {
-		cout << q -> second << endl;
+	for(itr = m.begin(); itr != m.end(); itr++) {
+		cout << itr -> second << endl;
 	}
 
 }
