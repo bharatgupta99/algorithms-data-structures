@@ -6,10 +6,10 @@ void swap(int *A, int x, int y) {
 }
 
 int partitionPivot( int *A, int start, int end ) {
-	int partitionIndex = 0;
+	int partitionIndex = start;
 	int i, pivot = A[end];
-	for( i = 0; i < end ; i ++) {
-		if( pivot > A[i] ) {
+	for( i = start; i < end ; i ++) {
+		if(A[i] < pivot) {
 			swap(A, partitionIndex, i);
 			partitionIndex ++;
 		}
@@ -30,6 +30,7 @@ void quickSort(int *A, int start, int end) {
 }
 	
 int main() {
+	//ascending order sort 
 	int i, A[] = {4,1,3,9,7,5,0};
 	quickSort(A, 0, 6);
 	for( i = 0; i < 7; i ++) {
