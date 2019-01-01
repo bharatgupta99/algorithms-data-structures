@@ -21,6 +21,6 @@ class LongestCommonSequence {
 
 	public static void main(String[] args) {
 		LongestCommonSequence sq = new LongestCommonSequence();
-		System.out.println(sq.findLCS("ABCD", "ACDEB"));
+		System.out.println(sq.findLCS("ABGDDHBDHBDHCBKSJDBCOBCKJBWECBUECNIEJCIOECOJNEWJKCNKLMCKLNKJCBJKSCJ", "ABCBJBDJNCSDMCASKOPEKLDEJKCNHJEBCHEBYIBENUIWEBCHBDJCBDHD"));
 	}
 }
