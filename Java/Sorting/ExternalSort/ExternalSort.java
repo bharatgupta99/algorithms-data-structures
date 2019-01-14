@@ -18,8 +18,7 @@ public class ExternalSort {
 
 	public boolean sort() throws IOException {
 
-		int round = 0;
-		int noOfElements = 0;
+		int rounds = 0;
 		ArrayList<Integer> arr = new ArrayList<>();
 
 		//Sorting 
@@ -28,24 +27,22 @@ public class ExternalSort {
 		while ((read = br.readLine()) != null) {
 			arr.add(Integer.valueOf(read));
 			if (arr.size() == RAM_CAP) {
-				round++;
+				rounds++;
 				Collections.sort(arr);
-				FileWriter fw = new FileWriter(String.valueOf(round) + ".txt");
+				FileWriter fw = new FileWriter(String.valueOf(rounds) + ".txt");
 				for (int i = 0; i < arr.size(); i++) {
 					fw.write(String.valueOf(arr.get(i)) + "\n");
-					noOfElements++;
 				}
 				fw.close();
 				arr.clear();
 			}
 		}
 		if (arr.size() != 0) {
-			round++;
+			rounds++;
 			Collections.sort(arr);
-			FileWriter fw = new FileWriter(String.valueOf(round) + ".txt");
+			FileWriter fw = new FileWriter(String.valueOf(rounds) + ".txt");
 			for (int i = 0; i < arr.size(); i++) {
 				fw.write(String.valueOf(arr.get(i)) + "\n");
-				noOfElements++;
 			}
 			fw.close();
 			arr.clear();
@@ -55,10 +52,10 @@ public class ExternalSort {
 
 		// merging files
 		FileWriter result = new FileWriter("output.txt");
-		BufferedReader[] files = new BufferedReader[round];
+		BufferedReader[] files = new BufferedReader[rounds];
 		PriorityQueue<Integer> pq = new PriorityQueue<>();
-		String[] reads = new String[round];
-		for (int i = 0; i < round; i++) {
+		String[] reads = new String[rounds];
+		for (int i = 0; i < rounds; i++) {
 			files[i] = new BufferedReader(new FileReader(String.valueOf(i + 1) + ".txt"));
 			reads[i] = files[i].readLine();
 			pq.add(Integer.valueOf(reads[i]));
@@ -67,7 +64,7 @@ public class ExternalSort {
 		while (pq.size() != 0) {
 			String small = String.valueOf(pq.poll());
 			result.write(small + "\n");
-			for (int i = 0; i < round; i++) {
+			for (int i = 0; i < rounds; i++) {
 				if (reads[i] != null && reads[i].equals(small)) {
 					reads[i] = files[i].readLine();
 					if(reads[i] != null){
@@ -78,6 +75,13 @@ public class ExternalSort {
 			}	
 		}
 		result.close();
+
+		//delete extra files
+		File f;
+		for (int i = 0; i < rounds; i++) {
+			f = new File(String.valueOf(i + 1) + ".txt");
+			f.delete();
+		}
 
 
 		return true;

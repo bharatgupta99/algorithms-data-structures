@@ -9,7 +9,7 @@ public class Test {
 		//A file with random numbers
 		FileWriter fw = new FileWriter("input.txt");
 		Random rand = new Random();
-		for (int i = 0; i < 1022; i++) {
+		for (int i = 0; i < 1234; i++) {
 			fw.write(String.valueOf(rand.nextInt(1000) + 1) + "\n");
 		}
 		fw.close();
